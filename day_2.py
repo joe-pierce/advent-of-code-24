@@ -3,7 +3,7 @@ from numpy.typing import NDArray
 import utils
 
 
-def prep_data(input_data: str) -> NDArray:
+def prep_data(input_data: str) -> list[NDArray]:
     return [
         np.array(line.strip().split()).astype(int)
         for line in input_data.strip().split("\n")
