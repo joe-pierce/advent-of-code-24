@@ -2,22 +2,24 @@ import numpy as np
 from numpy.typing import NDArray
 import utils
 
-def prep_data(input_data:str) -> NDArray:
+
+def prep_data(input_data: str) -> NDArray:
     return np.array(
         [line.strip().split() for line in input_data.strip().split("\n")]
     ).astype(int)
+
 
 def calculate_distance_between_lists(input_data: str) -> int:
     arr = prep_data(input_data)
     arr = np.sort(arr, 0)
     return int(np.sum(np.abs(np.diff(arr))))
 
+
 def calculate_similarity_score(input_data: str) -> int:
     arr = prep_data(input_data)
-    left_arr = arr[:,0]
-    right_arr = arr[:,1]
-    return np.sum(np.sum(left_arr[:, np.newaxis]==right_arr, axis=1) * left_arr)
-    
+    left_arr = arr[:, 0]
+    right_arr = arr[:, 1]
+    return np.sum(np.sum(left_arr[:, np.newaxis] == right_arr, axis=1) * left_arr)
 
 
 def test_case():

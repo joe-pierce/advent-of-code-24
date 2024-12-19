@@ -21,8 +21,9 @@ def calculate_safe_count(input_data: str, with_dampener: bool = False) -> int:
                 total_count += 1
     return total_count
 
-def is_safe(arr: NDArray)-> bool:
-    if arr.ndim ==1:
+
+def is_safe(arr: NDArray) -> bool:
+    if arr.ndim == 1:
         arr = arr[np.newaxis, :]
     diff = np.diff(arr)
     report_length = diff.shape[1]
@@ -36,6 +37,7 @@ def is_safe(arr: NDArray)-> bool:
         )
     )
     return int(result) > 0
+
 
 def test_case():
     input_data = """

@@ -12,20 +12,21 @@ def parse_input(input_data: str) -> tuple[list[tuple[int, int]], list[list[int]]
         updates.append([int(i) for i in update.strip().split(",")])
     return rules, updates
 
+
 class Validator:
-    #TODO: Need to change this to only have orders for explicitly ordered pairs,
+    # TODO: Need to change this to only have orders for explicitly ordered pairs,
     # maybe just simplify and validate against each pair
-    def __init__(self, rules:tuple[list[tuple[int, int]]])-> None:
+    def __init__(self, rules: tuple[list[tuple[int, int]]]) -> None:
         self.rules = rules
-    
-    def is_valid(self, values: list[int])-> bool:
+
+    def is_valid(self, values: list[int]) -> bool:
         for lower, upper in self.rules:
             if lower in values and upper in values:
                 if values.index(upper) < values.index(lower):
                     return False
         return True
-    
-    def order(self, values: list[int])-> list[int]:
+
+    def order(self, values: list[int]) -> list[int]:
         while not self.is_valid(values):
             for lower, upper in self.rules:
                 if lower in values and upper in values:
@@ -58,8 +59,6 @@ def calculate_sum_of_incorrect_mid_values(input_data: str) -> int:
         mid_point = correct_update[len(correct_update) // 2]
         mid_points.append(mid_point)
     return sum(mid_points)
-
-
 
 
 def test_case():
